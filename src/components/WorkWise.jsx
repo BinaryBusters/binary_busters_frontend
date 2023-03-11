@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ModalButton from "./ModalButton";
+import Header from "./Header";
 
 const WorkWise = ({ scenarioText }) => {
+  const [step, setStep] = useState(0);
+  const [correct, setCorrect] = useState(false);
+
   return (
     <div className="flex flex-col justify-center items-center">
+      <Header />
       <div className="card p-5 bg-white">
         <h2 className="card-title text-3xl pb-3">Scenario</h2>
         <div className="card-body bg-primary rounded-2xl w-80 mb-10 text-white">
@@ -19,10 +24,10 @@ const WorkWise = ({ scenarioText }) => {
       </div>
       {/* Modal */}
       <div className="justify-center card-actions mt-10">
-        <ModalButton/>
-        </div>
+        <ModalButton />
+      </div>
     </div>
   );
-}
+};
 
 export default WorkWise;
