@@ -1,10 +1,14 @@
-import CYL from './components/ChooseYourLearning'
+import { Routes, Route } from "react-router-dom"
+import CYL from './components/ChooseYourLearning';
+import BugHuntLang from './components/BugHuntLang';
 
-function App() {
+export default function App() {
 
   return (
-    <CYL/>
+    <Routes>
+        <Route path="/chooseyourlearning" element={ <CYL/> } />
+        <Route path="/bughunt/lang" element={ <BugHuntLang/> } />
+    </Routes>
   )
 }
 
-export default App
