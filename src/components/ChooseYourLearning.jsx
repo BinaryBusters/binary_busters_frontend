@@ -22,7 +22,7 @@ export default function CYL() {
                     <img src="../workwise.png" className="w-20"></img>
                     <div className="flex flex-col justify-center w-7/12">
                         <h2 className="text-secondary font-bold text-2xl">Work Wise</h2>
-                        <p className="text-secondary text-lg">Behaviour check</p>
+                        <p className="text-secondary text-lg">Behavioural <br /> assessment</p>
                     </div>
                 </div>
             </div>

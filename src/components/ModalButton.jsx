@@ -1,6 +1,6 @@
 import React from "react";
 
-const ModalButton = ({correct}) => {
+const ModalButton = ({correct = true}) => {
   if (correct) {
     const title = "Correct";
     const answer = "Why the answer is incorrect/correct";

@@ -2,6 +2,10 @@ import React from "react";
 import ModalButton from "./ModalButton";
 
 const WorkWise = ({ scenarioText }) => {
+  // const [step, setStep] = useState(0);
+  // data = [question1, question2]
+
+  //
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="card p-5 bg-white">
