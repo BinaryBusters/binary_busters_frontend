@@ -4,33 +4,44 @@ import Header from "./Header";
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 
-const WorkWise = ({scenarioNumber = 1 }) => {
+const WorkWise = ({ scenarioNumber = 1 }) => {
   const [response, setResponse] = useState("");
   const [answer, setAnswer] = useState("");
   const [lives, setLives] = useState(5);
+  const [questions, setQuestions] = useState([]);
+  const [activeQuestion, setActiveQuestion] = useState(0);
+  const [result, setResult] = useState("");
   const queryClient = useQueryClient();
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('https://binarybusterbackend.onrender.com/getOpenAIResponse', {
-        questionId: 1,
-        userResponse: response
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
+      const res = await axios.post(
+        "https://binarybusterbackend.onrender.com/getOpenAIResponse",
+        {
+          questionId: 1,
+          userResponse: response,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      })
+      );
       setAnswer(res.data);
-      
+
       // update lives
       if (res.data === "correct") {
         setLives(lives);
       } else {
         setLives(lives - 1);
       }
+
+      // go to next question
+      setActiveQuestion(activeQuestion + 1); // add this line
     } catch (error) {
       console.error(error);
     }
+    console.log(activeQuestion,"look here");
   };
 
   const fetchScenarios = async () => {
@@ -38,11 +49,14 @@ const WorkWise = ({scenarioNumber = 1 }) => {
       const res = await axios.get(
         "https://binarybusterbackend.onrender.com/getQuestion?limit=10"
       );
+      setQuestions(Object.values(res.data));
       return res.data;
     } catch (error) {
       throw new Error(error.res.data);
     }
   };
+
+  console.log(questions);
 
   const { data, isLoading, isError } = useQuery("scenarios", fetchScenarios);
 
@@ -78,7 +92,7 @@ const WorkWise = ({scenarioNumber = 1 }) => {
       </div>
       {/* Modal */}
       <div className="justify-center card-actions mt-10">
-        <ModalButton onClick={handleSubmit} correct={answer}/>
+        <ModalButton onClick={handleSubmit} correct={answer} />
       </div>
     </div>
   );
