@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import CYL from './components/ChooseYourLearning';
 import BugHuntLang from './components/BugHuntLang';
 import WorkWise from "./components/WorkWise";
+import GameOver from "./components/GameOver";
 
 export default function App() {
   const text =
@@ -10,7 +11,10 @@ export default function App() {
     <Routes>
         <Route path="/chooseyourlearning" element={ <CYL/> } />
         <Route path="/bughunt/lang" element={ <BugHuntLang/> } />
-        <Route path="/workwise" element={ <WorkWise scenarioText={text} /> } />
+        <Route path="/workwise" element={ <WorkWise scenarioText={text} /> }
+         />
+         <Route path="/gameover" element={ <GameOver/> }
+         />
     </Routes>
   )
 }

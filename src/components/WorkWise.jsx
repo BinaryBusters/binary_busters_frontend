@@ -8,7 +8,7 @@ const WorkWise = ({ scenarioText }) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <Header />
+      <Header lives="3"/>
       <div className="card p-5 bg-white">
         <h2 className="card-title text-3xl pb-3">Scenario</h2>
         <div className="card-body bg-primary rounded-2xl w-80 mb-10 text-white">

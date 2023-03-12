@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const ModalButton = ({correct}) => {
+  const navigate = useNavigate();
+
   if (correct) {
     const title = "Correct";
     const answer = "Why the answer is incorrect/correct";
@@ -23,7 +27,7 @@ const ModalButton = ({correct}) => {
             {answer}
           </p>
           <div className="modal-action justify-center">
-            <label htmlFor="my-modal-6" className="btn btn-wide text-xl btn-primary text-white">
+            <label htmlFor="my-modal-6" className="btn btn-wide text-xl btn-primary text-white"  onClick={() => navigate("/gameover")}>
               Continue
             </label>
           </div>
@@ -54,7 +58,7 @@ const ModalButton = ({correct}) => {
             {answer}
           </p>
           <div className="modal-action justify-center">
-            <label htmlFor="my-modal-6" className="btn btn-wide text-xl bg-accent-focus border-rose-400 hover:bg-error">
+            <label htmlFor="my-modal-6" className="btn btn-wide text-xl bg-accent-focus border-rose-400 hover:bg-error" onClick={() => navigate("/gameover")}>
               Continue
             </label>
           </div>
