@@ -1,17 +1,25 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import javascriptIcon from '../assets/javascript.png';
+import pythonIcon from '../assets/python.png';
+import cIcon from '../assets/c.png';
+import javaIcon from '../assets/java.png';
+import cplusplusIcon from '../assets/cplusplus.png';
+import csharpIcon from '../assets/csharp.png';
+import phpIcon from '../assets/php.png';
+import rubyIcon from '../assets/ruby.png';
 
-export default function BugHuntLang() {
+export default function BugHuntQuiz() {
     const [selected, setSelected] = useState(null);
     const navigate = useNavigate();
-    const languages = [{ name: 'JavaScript', logo: '../javascript.png' },
-    { name: 'Python', logo: '../python.png' },
-    { name: 'C', logo: '../c.png' },
-    { name: 'Java', logo: '../java.png' },
-    { name: 'C++', logo: '../cplusplus.png' },
-    { name: 'C#', logo: '../csharp.png' },
-    { name: 'PHP', logo: '../php.png' },
-    { name: 'Ruby', logo: '../ruby.png' },
+    const languages = [{ name: 'JavaScript', logo: javascriptIcon },
+    { name: 'Python', logo: pythonIcon },
+    { name: 'C', logo: cIcon },
+    { name: 'Java', logo: javaIcon },
+    { name: 'C++', logo: cplusplusIcon },
+    { name: 'C#', logo: csharpIcon },
+    { name: 'PHP', logo: phpIcon },
+    { name: 'Ruby', logo: rubyIcon },
     ];
 
     const languagesComponent = languages.map((language, index) => {
@@ -24,12 +32,12 @@ export default function BugHuntLang() {
 
     return (
         <div className="flex flex-col justify-evenly w-10/12 h-full">
-            <img src="../arrowback.png" className="absolute w-10 h-10 top-12 cursor-pointer" onClick={() => navigate("/chooseyourlearning")}></img>
+            <img src="../arrowback." className="absolute w-10 h-10 top-12 cursor-pointer" onClick={() => navigate("/chooseyourlearning")}></img>
             <h1 className="text-3xl font-bold self-center text-center">Choose your <br /> language</h1>
             <div className="flex flex-col justify-center items-center  gap-2.5">
                 {languagesComponent}
             </div>
-            <div className={`btn btn-block text-2xl ${!selected && "btn-disabled"}`} onClick={() => selected && navigate(`/bughunt/${selected}/0`)}>Continue</div>
+            <div className={`btn btn-block text-2xl ${selected || "btn-disabled"}`} onClick={() => selected && navigate(`/bughunt/${selected}/0`)}>Continue</div>
         </div>
     )
 }
