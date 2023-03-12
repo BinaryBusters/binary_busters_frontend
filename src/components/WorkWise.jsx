@@ -56,7 +56,7 @@ const WorkWise = () => {
 
   const handleContinue = () => {
     if (lives === 0 || questions.length == 0) {
-      navigate("/gameover");
+      navigate("/gameover", { state: { question: scenarioNumber } });
     } else {
       setQuestions((questions) => questions.slice(1));
       setScenarioNumber(scenarioNumber + 1);
@@ -80,7 +80,7 @@ const WorkWise = () => {
             <div>Error</div>
           ) : (
             <div>
-                  <p>{questions[0]}</p>
+              <p>{questions[0]}</p>
             </div>
           )}
         </div>
