@@ -3,22 +3,22 @@ import ModalButton from "./ModalButton";
 import Header from "./Header";
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const WorkWise = ({ scenarioNumber = 1 }) => {
+const WorkWise = () => {
+  const navigate = useNavigate();
   const [response, setResponse] = useState("");
   const [answer, setAnswer] = useState("");
   const [lives, setLives] = useState(5);
   const [questions, setQuestions] = useState([]);
-  const [activeQuestion, setActiveQuestion] = useState(0);
-  const [result, setResult] = useState("");
-  const queryClient = useQueryClient();
+  const [scenarioNumber, setScenarioNumber] = useState(1);
 
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
         "https://binarybusterbackend.onrender.com/getOpenAIResponse",
         {
-          questionId: 1,
+          questionId: scenarioNumber,
           userResponse: response,
         },
         {
@@ -36,12 +36,10 @@ const WorkWise = ({ scenarioNumber = 1 }) => {
         setLives(lives - 1);
       }
 
-      // go to next question
-      setActiveQuestion(activeQuestion + 1); // add this line
     } catch (error) {
       console.error(error);
     }
-    console.log(activeQuestion,"look here");
+
   };
 
   const fetchScenarios = async () => {
@@ -53,6 +51,15 @@ const WorkWise = ({ scenarioNumber = 1 }) => {
       return res.data;
     } catch (error) {
       throw new Error(error.res.data);
+    }
+  };
+
+  const handleContinue = () => {
+    if (lives === 0 || questions.length == 0) {
+      navigate("/gameover");
+    } else {
+      setQuestions((questions) => questions.slice(1));
+      setScenarioNumber(scenarioNumber + 1);
     }
   };
 
@@ -73,11 +80,7 @@ const WorkWise = ({ scenarioNumber = 1 }) => {
             <div>Error</div>
           ) : (
             <div>
-              {Object.values(data).find((scenario) => (
-                <div key={scenario.id}>
-                  <p>{scenario}</p>
-                </div>
-              ))}
+                  <p>{questions[0]}</p>
             </div>
           )}
         </div>
@@ -92,7 +95,7 @@ const WorkWise = ({ scenarioNumber = 1 }) => {
       </div>
       {/* Modal */}
       <div className="justify-center card-actions mt-10">
-        <ModalButton onClick={handleSubmit} correct={answer} />
+        <ModalButton onClick={handleSubmit} correct={answer} onContinue={handleContinue} />
       </div>
     </div>
   );

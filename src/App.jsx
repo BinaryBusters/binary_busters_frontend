@@ -20,7 +20,7 @@ export default function App() {
       <Route path="/bughunt/:language/level/:level"
         // loader={({params}) => axios.get(`https://binarybusterbackend.onrender.com/getQuestion`) }
         element={<BugHuntQuiz />} />
-      <Route path="/workwise" element={<WorkWise scenarioText={text} />} />
+      {/* <Route path="/workwise" element={<WorkWise scenarioText={text} />} /> */}
       <Route path="/workwise" element={<QueryClientProvider client={queryClient}><WorkWise scenarioText={text} /></QueryClientProvider>}
       />
       <Route path="/gameover" element={<GameOver />}

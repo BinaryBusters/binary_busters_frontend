@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const goodTitles = [
   "Good answer!",
@@ -22,9 +21,7 @@ const badTitles = [
   "NOT POGGERS >:(",
 ];
 
-const ModalButton = ({ correct, onClick }) => {
-  const navigate = useNavigate();
-
+const ModalButton = ({ correct, onClick, onContinue}) => {
   
 
   if (correct.response_quality === true) {
@@ -54,7 +51,7 @@ const ModalButton = ({ correct, onClick }) => {
                 <label
                   htmlFor="my-modal-6"
                   className="btn btn-wide text-xl btn-primary text-white"
-                  onClick={() => navigate("/gameover")}
+                  onClick={onContinue}
                 >
                   Continue
                 </label>
@@ -90,7 +87,7 @@ const ModalButton = ({ correct, onClick }) => {
                 <label
                   htmlFor="my-modal-6"
                   className="btn btn-wide text-xl bg-accent-focus border-rose-400 hover:bg-error"
-                  onClick={() => navigate("/gameover")}
+                  onClick={onContinue}
                 >
                   Continue
                 </label>

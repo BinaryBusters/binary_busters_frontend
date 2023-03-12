@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const GameOver = ({ levelsCompleted = 2 }) => {
+const GameOver = ({ levelsCompleted }) => {
     const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center items-center absolute top-30">
