@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/chooseyourlearning" element={<CYL />} />
+      <Route path="/" element={<CYL />} />
       <Route path="/bughunt/lang" element={<BugHuntLang />} />
       <Route path="/bughunt/:language/level" element={<BugHuntLevel />} />
       <Route path="/bughunt/:language/level/:level"

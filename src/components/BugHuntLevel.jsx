@@ -17,7 +17,7 @@ export default function BugHuntLevel() {
 
     return (
         <div className="flex flex-col justify-evenly w-10/12 h-full">
-            <img src="../../arrowback.png" className="absolute w-10 h-10 top-12 cursor-pointer" onClick={() => navigate("/chooseyourlearning")}></img>
+            <img src="../../arrowback.png" className="absolute w-10 h-10 top-12 cursor-pointer" onClick={() => navigate("/")}></img>
             <h1 className="text-3xl font-bold self-center text-center">Choose your <br /> level</h1>
             <div className="flex justify-center items-center gap-1">
                 {levelsComponent}
