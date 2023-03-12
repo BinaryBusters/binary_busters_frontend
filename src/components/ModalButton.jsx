@@ -63,33 +63,6 @@ const ModalButton = ({correct}) => {
     </div>
     )
   }
-  
-  return (
-    <div className="">
-      {/* The button to open modal */}
-      <label htmlFor="my-modal-6" className="btn">
-        open modal
-      </label>
-
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box rounded-none border-t-4 border-primary bg-secondary">
-          <h3 className="font-bold text-4xl text-primary">
-            {title}
-          </h3>
-          <p className="py-4 text-lg text-primary">
-            {answer}
-          </p>
-          <div className="modal-action justify-center">
-            <label htmlFor="my-modal-6" className="btn btn-wide text-xl btn-primary">
-              Continue
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 };
 
 export default ModalButton;
