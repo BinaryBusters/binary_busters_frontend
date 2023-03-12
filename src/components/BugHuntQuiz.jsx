@@ -23,7 +23,7 @@ export default function BugHuntQuiz() {
     const questions = useLoaderData()
     const [userAnswer, setUserAnswer] = useState("");
     const [lives, setLives] = useState(5);
-    const [showModal, setShowModal] = useState(false);
+    const [result, setResult] = useState("");
 
     return (
         <div className="flex flex-col w-10/12 h-4/5 justify-center">
@@ -92,7 +92,7 @@ export default function BugHuntQuiz() {
                             if (userAnswer != questions[step][1][0]) {
                                 setLives((lives) => lives - 1);
                             }
-                            setShowModal(true);
+                            setResult(userAnswer == questions[step][1][0] ? "correct" : "incorrect");
                         }
                     }}
                 >
@@ -100,25 +100,25 @@ export default function BugHuntQuiz() {
                 </div>
             </div>
             <div
-                className={`modal modal-bottom sm:modal-middle ${showModal && "modal-open"
+                className={`modal modal-bottom sm:modal-middle ${result && "modal-open"
                     }`}
             >
                 <div
-                    className={`modal-box rounded-none border-t-4 ${userAnswer == questions[step][1][0]
+                    className={`modal-box rounded-none border-t-4 ${result == "correct"
                         ? "border-primary bg-secondary"
                         : "border-error bg-accent"
                         }`}
                 >
                     <h3
-                        className={`font-bold text-4xl ${userAnswer == questions[step][1][0]
+                        className={`font-bold text-4xl ${result == "correct"
                             ? "text-primary"
                             : "text-red-600"
                             }`}
                     >
-                        {userAnswer == questions[step][1][0] ? "Correct!" : "Incorrect."}
+                        {result == "correct" ? "Correct!" : "Incorrect."}
                     </h3>
                     <p
-                        className={`py-4 text-lg ${userAnswer == questions[step][1][0]
+                        className={`py-4 text-lg ${result == "correct"
                             ? "text-primary"
                             : "text-red-600"
                             }`}
@@ -128,7 +128,7 @@ export default function BugHuntQuiz() {
                     <div className="modal-action justify-center">
                         <label
                             htmlFor="my-modal-6"
-                            className={`btn btn-wide text-xl ${userAnswer == questions[step][1][0]
+                            className={`btn btn-wide text-xl ${result == "correct"
                                 ? "btn-primary text-white"
                                 : "bg-accent-focus border-rose-400 hover:bg-error"
                                 }`}
@@ -136,9 +136,9 @@ export default function BugHuntQuiz() {
                                 if (lives == 0 || step >= Object.keys(questions).length) {
                                     return navigate("/gameover", { state: { language, level, score: step - (5 - lives) } });
                                 }
-                                setStep((step) => step + 1);
-                                setShowModal(false);
+                                setResult("");
                                 setUserAnswer("");
+                                setStep((step) => step + 1);
                             }}
                         >
                             Continue

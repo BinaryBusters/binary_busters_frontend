@@ -18,7 +18,9 @@ const router = createBrowserRouter(
       <Route path="/bughunt/:language/level/:level"
         loader={({ params }) => axios.get(`https://binarybusterbackend.onrender.com/getCodeQuestion`).then(res => res.data)}
         element={<BugHuntQuiz />} />
-      <Route path="/workwise" element={<QueryClientProvider client={queryClient}><WorkWise /></QueryClientProvider>}
+      {/* <Route path="/workwise" element={<QueryClientProvider client={queryClient}><WorkWise /></QueryClientProvider>}
+      /> */}
+            <Route path="/workwise" loader={({ params }) => axios.get(`https://binarybusterbackend.onrender.com/getQuestion`).then(res => res.data)} element={<WorkWise />}
       />
       <Route path="/gameover" element={<GameOver />}
       />
