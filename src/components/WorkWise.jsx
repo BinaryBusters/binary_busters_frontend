@@ -28,9 +28,8 @@ const WorkWise = () => {
         }
       );
       setAnswer(res.data);
-
       // update lives
-      if (res.data === "correct") {
+      if (res.data.response_quality == true) {
         setLives(lives);
       } else {
         setLives(lives - 1);
@@ -60,10 +59,9 @@ const WorkWise = () => {
     } else {
       setQuestions((questions) => questions.slice(1));
       setScenarioNumber(scenarioNumber + 1);
+      setResponse("");
     }
   };
-
-  console.log(questions);
 
   const { data, isLoading, isError } = useQuery("scenarios", fetchScenarios);
 
@@ -89,14 +87,18 @@ const WorkWise = () => {
           <textarea
             className="textarea h-20 textarea-bordered textarea-primary"
             placeholder="Enter your response here"
-            onChange={(e) => setResponse(e.target.value)}
+            onChange={(e) => setResponse(e.target.value)
+            }
+            value={response}
           ></textarea>
         </div>
       </div>
       {/* Modal */}
-      <div className="justify-center card-actions mt-10">
+      
+        <div className="justify-center card-actions mt-10">
         <ModalButton onClick={handleSubmit} correct={answer} onContinue={handleContinue} />
       </div>
+      
     </div>
   );
 };
