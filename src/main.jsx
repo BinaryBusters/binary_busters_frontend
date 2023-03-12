@@ -5,7 +5,6 @@ import App from './App'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
     <div className="mockup-phone">
       <div className="camera"></div>
       <div className="display">
@@ -14,6 +13,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </div>
       </div>
     </div>
-  </BrowserRouter>
 )
        
