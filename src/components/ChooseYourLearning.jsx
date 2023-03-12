@@ -10,7 +10,7 @@ export default function CYL() {
     return (
         <div className="flex flex-col justify-evenly w-10/12 h-full">
             <h1 className="text-3xl font-bold self-center text-center">Choose your <br /> learning</h1>
-            <div className="flex flex-col justify-center items-center gap-5">
+            <div className="flex flex-col justify-center items-center gap-20">
                 <div className={`flex justify-end items-center w-full py-6 rounded-3xl border-2 border-solid border-secondary gap-5 shadow-lg cursor-pointer ${selected === "bughunt" ? "bg-primary" : "bg-secondary-content"}`}
                     onClick={() => setSelected("bughunt")}>
                     <img src={bugHuntIcon} className="w-20"></img>

@@ -5,7 +5,10 @@ import WorkWise from "./components/WorkWise";
 import BugHuntLevel from "./components/BugHuntLevel";
 import BugHuntQuiz from "./components/BugHuntQuiz";
 import axios from "axios";
+import GameOver from "./components/GameOver";
+import { QueryClientProvider, useQuery, useQueryClient, QueryClient } from "react-query";
 
+const queryClient = new QueryClient();
 export default function App() {
   const text =
     "You are a manager at a company and you have a new employee. You are in a meeting and you need to take a call from the new employee. What do you do?";
@@ -18,6 +21,10 @@ export default function App() {
         // loader={({params}) => axios.get(`https://binarybusterbackend.onrender.com/getQuestion`) }
         element={<BugHuntQuiz />} />
       <Route path="/workwise" element={<WorkWise scenarioText={text} />} />
+      <Route path="/workwise" element={<QueryClientProvider client={queryClient}><WorkWise scenarioText={text} /></QueryClientProvider>}
+      />
+      <Route path="/gameover" element={<GameOver />}
+      />
     </Routes>
   )
 }
