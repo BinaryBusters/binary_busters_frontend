@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import bugHuntIcon from "../assets/bughunter.png";
+import workWiseIcon from "../assets/workwise.png";
 
 export default function CYL() {
     const [selected, setSelected] = useState(null);
@@ -11,7 +13,7 @@ export default function CYL() {
             <div className="flex flex-col justify-center items-center gap-20">
                 <div className={`flex justify-end items-center w-full py-6 rounded-3xl border-2 border-solid border-secondary gap-5 shadow-lg cursor-pointer ${selected === "bughunt" ? "bg-primary" : "bg-secondary-content"}`}
                     onClick={() => setSelected("bughunt")}>
-                    <img src="../bughunter.png" className="w-20"></img>
+                    <img src={bugHuntIcon} className="w-20"></img>
                     <div className="flex flex-col justify-center w-7/12">
                         <h2 className="text-secondary font-bold text-2xl">Bug Hunt</h2>
                         <p className="text-secondary text-lg">Hunt for bugs</p>
@@ -19,10 +21,10 @@ export default function CYL() {
                 </div>
                 <div className={`flex justify-end items-center w-full py-6 rounded-3xl border-2 border-solid border-secondary gap-5 shadow-lg cursor-pointer ${selected === "workwise" ? "bg-primary" : "bg-secondary-content"}`}
                     onClick={() => setSelected("workwise")}>
-                    <img src="../workwise.png" className="w-20"></img>
+                    <img src={workWiseIcon} className="w-20"></img>
                     <div className="flex flex-col justify-center w-7/12">
                         <h2 className="text-secondary font-bold text-2xl">Work Wise</h2>
-                        <p className="text-secondary text-lg">Behaviour check</p>
+                        <p className="text-secondary text-lg">Behavioural <br /> assessment</p>
                     </div>
                 </div>
             </div>
