@@ -7,6 +7,7 @@ import axios from "axios";
 const WorkWise = ({scenarioNumber = 1 }) => {
   const [response, setResponse] = useState("");
   const [answer, setAnswer] = useState("");
+  const [lives, setLives] = useState(5);
   const queryClient = useQueryClient();
 
   const handleSubmit = async () => {
@@ -21,11 +22,15 @@ const WorkWise = ({scenarioNumber = 1 }) => {
       })
       setAnswer(res.data);
       
-      // do something with the response
+      // update lives
+      if (res.data === "correct") {
+        setLives(lives);
+      } else {
+        setLives(lives - 1);
+      }
     } catch (error) {
       console.error(error);
     }
-    console.log(answer,"answer")
   };
 
   const fetchScenarios = async () => {
@@ -43,7 +48,7 @@ const WorkWise = ({scenarioNumber = 1 }) => {
 
   return (
     <div className="flex flex-col justify-center items-center mt-20">
-      <Header lives="3" />
+      <Header lives={lives} />
       <div className="card p-5 bg-white">
         <h2 className="card-title text-3xl pb-5">Scenario #{scenarioNumber}</h2>
 

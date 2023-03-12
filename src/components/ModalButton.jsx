@@ -44,6 +44,7 @@ const ModalButton = ({ correct, onClick }) => {
 
         {/* Put this part before </body> tag */}
         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+
         {!answer || (
           <div className="modal modal-bottom sm:modal-middle">
             <div className="modal-box rounded-none border-t-4 border-primary bg-secondary">
