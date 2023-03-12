@@ -44,7 +44,7 @@ const WorkWise = () => {
   const fetchScenarios = async () => {
     try {
       const res = await axios.get(
-        "https://binarybusterbackend.onrender.com/getQuestion?limit=10"
+        "https://binarybusterbackend.onrender.com/getQuestion"
       );
       setQuestions(Object.values(res.data));
       return res.data;
@@ -55,7 +55,7 @@ const WorkWise = () => {
 
   const handleContinue = () => {
     if (lives === 0 || questions.length == 0) {
-      navigate("/gameover", { state: { question: scenarioNumber } });
+      navigate("/gameover", { state: { question: scenarioNumber - (5 - lives) } });
     } else {
       setQuestions((questions) => questions.slice(1));
       setScenarioNumber(scenarioNumber + 1);

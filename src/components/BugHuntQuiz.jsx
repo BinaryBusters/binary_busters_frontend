@@ -52,6 +52,7 @@ export default function BugHuntQuiz() {
                         fontSize: 16,
                         scrollbar: {
                             vertical: "hidden",
+                            horizontal: "hidden",
                             verticalHasArrows: false,
                             verticalScrollbarSize: 0,
                             verticalSliderSize: 0,

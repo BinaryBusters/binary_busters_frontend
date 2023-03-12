@@ -17,7 +17,7 @@ const GameOver = () => {
         className="mb-20"
       ></iframe>
       <h1 className="text-5xl font-bold mb-10">Game Over</h1>
-      <p className="text-2xl mb-4">Congratulations!</p>
+      <p className="text-2xl mb-4">{score >= 5 || question >= 1 ? "Congratulations!" : "Nice try!"}</p>
       {language &&
         <p className="text-xl mb-10">
           You have scored {score} on {language} level {level}!
@@ -26,7 +26,7 @@ const GameOver = () => {
       {question && <p className="text-xl mb-10">
         You have passed {question} question{question !== 1 && "s"}.
       </p>}
-      {language ? <button className="btn btn-wide w-80 btn-primary mt-10 text-lg text-white" onClick={() => navigate(`/bughunt/${language}/level/${level + 1}`)}>Next level</button> : <button className="btn btn-wide w-80 btn-primary mt-10 text-lg text-white" onClick={() => navigate("/workwise")}>Start over</button>}
+      {language ? <button className="btn btn-wide w-80 btn-primary mt-10 text-lg text-white" onClick={() => navigate(`/bughunt/${language}/level/${+level + +1}`)}>Next level</button> : <button className="btn btn-wide w-80 btn-primary mt-10 text-lg text-white" onClick={() => navigate("/workwise")}>Start over</button>}
       <button className="btn btn-wide w-80 btn-neutral mt-10 text-lg" onClick={() => navigate("/")}>Return to home</button>
     </div>
   );

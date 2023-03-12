@@ -9,7 +9,7 @@ const Header = ({ progress, lives, backPath }) => {
   const maxHearts = 5;
 
   // Create an array of heart images based on the number of lives remaining
-  const hearts = Array.from({ length: maxHearts }, (_, index) => (
+  const hearts = lives !== undefined && Array.from({ length: maxHearts }, (_, index) => (
     <img
       key={index}
       src={heartIcon}

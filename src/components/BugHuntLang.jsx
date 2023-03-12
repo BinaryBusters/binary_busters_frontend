@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import Header from './Header';
 import javascriptIcon from '../assets/javascript.png';
 import pythonIcon from '../assets/python.png';
 import cIcon from '../assets/c.png';
@@ -32,7 +33,7 @@ export default function BugHuntLang() {
 
     return (
         <div className="flex flex-col justify-evenly w-10/12 h-full">
-            <img src="../arrowback.png" className="absolute w-10 h-10 top-12 cursor-pointer" onClick={() => navigate("/")}></img>
+            <Header backPath="/" />
             <h1 className="text-3xl font-bold self-center text-center">Choose your <br /> language</h1>
             <div className="flex flex-col justify-center items-center  gap-2.5">
                 {languagesComponent}
