@@ -48,7 +48,7 @@ const WorkWise = ({scenarioNumber = 1 }) => {
 
   return (
     <div className="flex flex-col justify-center items-center mt-20">
-      <Header lives={lives} />
+      <Header lives={lives} backPath="/chooseyourlearning" />
       <div className="card p-5 bg-white">
         <h2 className="card-title text-3xl pb-5">Scenario #{scenarioNumber}</h2>
 
