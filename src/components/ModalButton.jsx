@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const goodTitles = [
   "Good answer!",
@@ -21,8 +21,14 @@ const badTitles = [
   "NOT POGGERS >:(",
 ];
 
-const ModalButton = ({ correct, onClick, onContinue}) => {
-  
+const ModalButton = ({ correct, onClick, onContinue }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleOnClick = async () => {
+    setIsLoading(true);
+    await onClick(); // assuming onClick returns a promise that resolves when the submission is complete
+    setIsLoading(false);
+  };
 
   if (correct.response_quality === true) {
     const title = goodTitles[Math.floor(Math.random() * goodTitles.length)];
@@ -34,9 +40,9 @@ const ModalButton = ({ correct, onClick, onContinue}) => {
         <label
           htmlFor="my-modal-6"
           className="btn btn-wide text-lg"
-          onClick={onClick}
+          onClick={handleOnClick}
         >
-          Submit
+          {isLoading ? "Loading..." : "Submit"}
         </label>
 
         {/* Put this part before </body> tag */}
@@ -62,7 +68,7 @@ const ModalButton = ({ correct, onClick, onContinue}) => {
       </div>
     );
   } else {
-    const title = badTitles[Math.floor(Math.random() * badTitles.length)]
+    const title = badTitles[Math.floor(Math.random() * badTitles.length)];
     const answer = correct.response_content;
 
     return (
@@ -71,9 +77,9 @@ const ModalButton = ({ correct, onClick, onContinue}) => {
         <label
           htmlFor="my-modal-6"
           className="btn btn-wide text-2xl w-80"
-          onClick={onClick}
+          onClick={handleOnClick}
         >
-          Submit
+          {isLoading ? "Loading..." : "Submit"}
         </label>
 
         {/* Put this part before </body> tag */}
