@@ -23,7 +23,7 @@ const GameOver = () => {
           You have scored {score} on {language} level {level}!
         </p>
       }
-      {question && <p className="text-xl mb-10">
+      {question !== undefined && <p className="text-xl mb-10">
         You have passed {question} question{question !== 1 && "s"}.
       </p>}
       {language ? <button className="btn btn-wide w-80 btn-primary mt-10 text-lg text-white" onClick={() => navigate(`/bughunt/${language}/level/${+level + +1}`)}>Next level</button> : <button className="btn btn-wide w-80 btn-primary mt-10 text-lg text-white" onClick={() => navigate("/workwise")}>Start over</button>}

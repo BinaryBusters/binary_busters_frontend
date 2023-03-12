@@ -60,6 +60,7 @@ const WorkWise = () => {
       setQuestions((questions) => questions.slice(1));
       setScenarioNumber(scenarioNumber + 1);
       setResponse("");
+      setAnswer("");
     }
   };
 
@@ -96,7 +97,7 @@ const WorkWise = () => {
       {/* Modal */}
       
         <div className="justify-center card-actions mt-10">
-        <ModalButton onClick={handleSubmit} correct={answer} onContinue={handleContinue} />
+        <ModalButton onClick={handleSubmit} result={answer} onContinue={handleContinue} />
       </div>
       
     </div>

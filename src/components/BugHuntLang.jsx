@@ -34,7 +34,7 @@ export default function BugHuntLang() {
     return (
         <div className="flex flex-col justify-evenly w-10/12 h-full">
             <Header backPath="/" />
-            <h1 className="text-3xl font-bold self-center text-center">Choose your <br /> language</h1>
+            <h1 className="text-3xl font-bold self-center text-center z-10">Choose your <br /> language</h1>
             <div className="flex flex-col justify-center items-center  gap-2.5">
                 {languagesComponent}
             </div>
